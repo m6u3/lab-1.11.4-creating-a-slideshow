@@ -14,12 +14,12 @@ let imgElement = document.querySelector('.image');
  let nextBtn = document.querySelector('.next');
 
  //lets also get the bubbles
- let buubles =  document.querySelectorAll('.bubble');
+ let bubles =  document.querySelectorAll('.bubble');
 
  //I need a variable for the current Image that is displaying
  let currentImage = 0;
 
- buubles[0].textContent = '●';
+ bubles[0].textContent = '●';
 
  // Now lets put the first Image as default whe page is loaded
 
@@ -30,10 +30,10 @@ imgElement.src = images[currentImage];
 
 nextBtn.addEventListener('click', function(){
     if (currentImage < images.length - 1){
-        buubles[currentImage].textContent = '○'; //Needs to be before adding one to replave previous buble with empty one, if not all of them will vhange to filled.
+        bubles[currentImage].textContent = '○'; //Needs to be before adding one to replave previous buble with empty one, if not all of them will vhange to filled.
         currentImage = currentImage + 1;
         imgElement.src = images[currentImage];
-        buubles[currentImage].textContent = '●'; //Adding the filled buble at end after it has been added that way it matches the index(image and buble).
+        bubles[currentImage].textContent = '●'; //Adding the filled buble at end after it has been added that way it matches the index(image and buble).
 
     // console.log(currentImage);
     }
@@ -42,11 +42,24 @@ nextBtn.addEventListener('click', function(){
 //same with previous button
 previousBtn.addEventListener('click', function(){
     if(currentImage > 0){
-        buubles[currentImage].textContent = '○';
+        bubles[currentImage].textContent = '○';
         currentImage = currentImage -1;
         imgElement.src = images[currentImage];
-        buubles[currentImage].textContent = '●';
+        bubles[currentImage].textContent = '●';
         // console.log(currentImage)
     }
 })
+// Hard part making the controls work so start with for loop
 
+for (let i = 0; i < images.length ; i++){
+    //first we need to add event listenr for each of the bubles
+    bubles[i].addEventListener('click', function(e){ 
+        bubles[currentImage].textContent = '○';
+        currentImage = i;
+        imgElement.src = images[currentImage]; //<<< Major point  of problem make sure to declare the array then the index inside better idea to call it Index in the V so it can be less confusing.
+        bubles[currentImage].textContent = '●';
+
+        console.log(e.target)
+    })
+}
+// Finally Done!!! 
