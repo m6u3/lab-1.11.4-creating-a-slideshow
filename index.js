@@ -30,7 +30,7 @@ imgElement.src = images[currentImage];
 
 nextBtn.addEventListener('click', function(){
     if (currentImage < images.length - 1){
-        bubles[currentImage].textContent = '○'; //Needs to be before adding one to replave previous buble with empty one, if not all of them will vhange to filled.
+        bubles[currentImage].textContent = '○'; //Needs to be before adding one to replace previous buble with empty one, if not all of them will vhange to filled.
         currentImage = currentImage + 1;
         imgElement.src = images[currentImage];
         bubles[currentImage].textContent = '●'; //Adding the filled buble at end after it has been added that way it matches the index(image and buble).
