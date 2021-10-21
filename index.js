@@ -19,20 +19,34 @@ let imgElement = document.querySelector('.image');
  //I need a variable for the current Image that is displaying
  let currentImage = 0;
 
+ buubles[0].textContent = '●';
+
  // Now lets put the first Image as default whe page is loaded
 
 imgElement.src = images[currentImage];
 
 
-//  Lets start with the bubbles menu we need a loop to iterate between them.
+//clicking the next button changwes the src path to the next image so event listener
 
-for (i = 0; i < buubles.length; i++){
-    //now we need an event listener for each bubble
-    buubles[i].addEventListener('click', function(e){
-        //lets start by changing the text to a filled circle
-        e.target.textContent = '●';
-        currentImage = i;
-        console.log(e.target);
-        console.log(currentImage)
-    })
-}
+nextBtn.addEventListener('click', function(){
+    if (currentImage < images.length - 1){
+        buubles[currentImage].textContent = '○'; //Needs to be before adding one to replave previous buble with empty one, if not all of them will vhange to filled.
+        currentImage = currentImage + 1;
+        imgElement.src = images[currentImage];
+        buubles[currentImage].textContent = '●'; //Adding the filled buble at end after it has been added that way it matches the index(image and buble).
+
+    // console.log(currentImage);
+    }
+})
+
+//same with previous button
+previousBtn.addEventListener('click', function(){
+    if(currentImage > 0){
+        buubles[currentImage].textContent = '○';
+        currentImage = currentImage -1;
+        imgElement.src = images[currentImage];
+        buubles[currentImage].textContent = '●';
+        // console.log(currentImage)
+    }
+})
+
