@@ -56,6 +56,8 @@ for (let i = 0; i < images.length ; i++){
     bubles[i].addEventListener('click', function(e){ 
         bubles[currentImage].textContent = '○';
         currentImage = i;
+        console.log(i)
+        console.log(currentImage)
         imgElement.src = images[currentImage]; //<<< Major point  of problem make sure to declare the array then the index inside better idea to call it Index in the V so it can be less confusing.
         bubles[currentImage].textContent = '●';
 
